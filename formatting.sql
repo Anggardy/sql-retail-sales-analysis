@@ -7,6 +7,29 @@ SELECT * FROM orders ORDER BY delivery_date;
 SELECT * FROM customers;
 SELECT * FROM sales;
 
+-- Perbaiki Data
+ALTER TABLE customers 
+	MODIFY COLUMN customer_name VARCHAR(50),
+    MODIFY COLUMN city VARCHAR(50),
+    MODIFY COLUMN state VARCHAR(50),
+    MODIFY COLUMN gender VARCHAR(20),
+    MODIFY COLUMN price float;
+
+
+Alter TABLE products RENAME COLUMN product_ID to product_id;
+ALTER TABLE products 
+	MODIFY COLUMN product_type VARCHAR(30),
+    MODIFY COLUMN size VARCHAR(5),
+    MODIFY COLUMN colour VARCHAR(10);
+
+ALTER TABLE orders 
+	MODIFY COLUMN order_date DATE,
+    MODIFY COLUMN delivery_date DATE;
+
+Alter TABLE sales MODIFY column price_per_unit float;
+Alter TABLE sales MODIFY column total_price float;
+
+-- Buat master data
 create view v_master_data as (
 	Select 
 		s.sales_id,
@@ -39,26 +62,3 @@ create view v_master_data as (
 	LEFT JOIN customers c ON o.customer_id=c.customer_id
 	WHERE DATEDIFF(o.delivery_date, o.order_date) > 0
 );
-
-
--- Perbaiki Data
-ALTER TABLE customers 
-	MODIFY COLUMN customer_name VARCHAR(50),
-    MODIFY COLUMN city VARCHAR(50),
-    MODIFY COLUMN state VARCHAR(50),
-    MODIFY COLUMN gender VARCHAR(20),
-    MODIFY COLUMN price float;
-
-
-Alter TABLE products RENAME COLUMN product_ID to product_id;
-ALTER TABLE products 
-	MODIFY COLUMN product_type VARCHAR(30),
-    MODIFY COLUMN size VARCHAR(5),
-    MODIFY COLUMN colour VARCHAR(10);
-
-ALTER TABLE orders 
-	MODIFY COLUMN order_date DATE,
-    MODIFY COLUMN delivery_date DATE;
-
-Alter TABLE sales MODIFY column price_per_unit float;
-Alter TABLE sales MODIFY column total_price float;
