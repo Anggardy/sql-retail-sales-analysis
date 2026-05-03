@@ -7,7 +7,9 @@ Select * FROM sales;
 -- Menampilkan data dengan revenue terbanyak.
 SELECT 
 	product_name,
-    sum(total_price) as total_revenue_product
+    sum(total_price) as total_revenue_product,
+    sum(quantity) as total_penjualan,
+    round(avg(harga_jual),2) as rata_rata_harga_produk
 FROM v_master_data
 GROUP BY product_name
 ORDER BY total_revenue_product DESC
@@ -33,8 +35,8 @@ ORDER BY total_revenue DESC;
 
 -- Rata-rata pengiriman
 Select 
-	product_type,
+	state,
     round(avg(delivery_time), 2) as rata_rata_pengiriman
 from v_master_data
-Group by product_type
+Group by state
 Order  by rata_rata_pengiriman desc;

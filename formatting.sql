@@ -40,6 +40,7 @@ create view v_master_data as (
 	WHERE DATEDIFF(o.delivery_date, o.order_date) > 0
 );
 
+
 -- Perbaiki Data
 ALTER TABLE customers 
 	MODIFY COLUMN customer_name VARCHAR(50),
