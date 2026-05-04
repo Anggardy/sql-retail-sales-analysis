@@ -31,7 +31,8 @@ SELECT
     sum(v.total_price) as total_revenue
 FROM v_master_data v
 GROUP BY state
-ORDER BY total_revenue DESC;
+ORDER BY total_revenue DESC
+LIMIT 5;
 
 -- Rata-rata pengiriman
 Select 
@@ -39,4 +40,5 @@ Select
     round(avg(delivery_time), 2) as rata_rata_pengiriman
 from v_master_data
 Group by state
-Order  by rata_rata_pengiriman desc;
+Order  by rata_rata_pengiriman desc
+LIMIT 5;
